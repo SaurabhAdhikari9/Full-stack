@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Modal, Input, Button, Form, Layout, Menu, Table } from 'antd';
 import { BorderlessTableOutlined, TeamOutlined, UserAddOutlined, UserDeleteOutlined } from '@ant-design/icons';
-import './App.css';
 import 'antd/dist/antd.css';
-import http from "./http";
+import Dashboard from './Dashboard'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 function Login() {
     const [loginData, setLoginData] = useState({
@@ -11,26 +16,7 @@ function Login() {
         password: ''
     })
 
-    
-
-
-    const [users, setUsers] = useState([]);
-    const fetchAllUsers = () =>{
-        http.get('./api').then(res=>{
-            setUsers(res.data);
-            console.log(users)
-        })
-    };
-    
-
-
-
     const [open, setOpen] = React.useState(false);
-
-    const [showTable, setShowTable] = useState();
-
-    
-
     const dialogBoxOpen = () => {
         setOpen(true);
         console.log('dailogBoxOpen: ' + open)
@@ -51,7 +37,7 @@ function Login() {
 
     });
 
-   
+
 
     return (
         <>
@@ -69,18 +55,22 @@ function Login() {
                     }}>
                         <Menu.Item icon={<BorderlessTableOutlined />
                         }>
-                            Dashboard
+                            <>
+                            <Link to="./Dashboard">Dashboard</Link>
+                                Dashboard
+                            </>
+
                         </Menu.Item>
                         <Menu.Item
                             icon={<TeamOutlined />}
                             onClick={dialogBoxOpen}
                         >
-                            login
+                            
                         </Menu.Item>
 
                         <Menu.Item icon={<UserAddOutlined />}
-                        onClick = {() => {
-                        }}
+                            onClick={() => {
+                            }}
                         >
                             Users
                         </Menu.Item>
@@ -89,16 +79,6 @@ function Login() {
                             Remove User
                         </Menu.Item>
                     </Menu>
-
-                    {/* <Button className='btn-user'
-        icon={<UserOutlined />}
-      >
-        Users
-      </Button>
-
-      <Button className='btn-user'>
-        Add User
-      </Button> */}
                 </Sider>
                 <Layout>
                     <Header
@@ -112,8 +92,7 @@ function Login() {
                             margin: '24px 16px 0',
                         }}
                     >
-                        hello word
-                 
+                        <Dashboard />
                         <div
                             className="site-layout-background"
                             style={{
@@ -121,7 +100,7 @@ function Login() {
                                 minHeight: 360,
                             }}
                         >
-                            
+
                         </div>
                     </Content>
                     <Footer
@@ -139,51 +118,6 @@ function Login() {
                 onCancel={() => { setOpen(false); clear(); }}
                 footer={null}
             >
-
-                {/* <Input
-                    autoFocus
-                    margin="dense"
-                    name='username'
-                    placeholder="Your name"
-                    value={loginData.username}
-                    type="username"
-                    fullWidth
-                    variant="standard"
-                    // addonAfter="@gmail.com"
-                    onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
-                    prefix={<UserOutlined />}
-                /> */}
-                {/* Password: 
-                <Input.Password
-                margin="dense"
-                name="password"
-                placeholder="Password"
-                fullWidth
-                required= {true}
-                onChange={(e) => setLoginData({...loginData, password:e.target.value})}
-                /> */}
-                {/* <Form.Item
-                label="Username"
-                >
-                    <Input
-                        placeholder="Username"
-                        rules={[{ required: true, message: 'Please input your Username!' }]}
-                        onChange={(e) => setLoginData({...loginData, username:e.target.value})}
-                    />
-
-                </Form.Item>
-                <Form.Item
-                    label="Password"
-                    rules={[{ required: true, message: 'Please input your Username!' }]}
-                >                
-                <Input.Password
-                    placeholder="Password"
-                    name="password"
-                    onChange={(e) => setLoginData({...loginData, password:e.target.value})}
-                />
-</Form.Item>
-<Button onClick={() => { clear(); dialogBoxClose() }}>Cancel</Button>
-                <Button onClick={() => { setOpen(false); show(); clear() }} >Submit</Button> */}
             </Modal>
         </>
     )
