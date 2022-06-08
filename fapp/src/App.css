@@ -1,0 +1,11 @@
+
+.main{
+  width: 100%;
+  height:  100vh;
+  /* background: linear-gradient(to right, #616161, #9bc5c3); */
+  background: linear-gradient(to bottom, #114357, #f29492);
+}
+.container{
+  padding-top:  10%;
+  padding-left:37%;  
+}
