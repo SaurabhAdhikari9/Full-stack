@@ -41,6 +41,8 @@ function Login() {
 
     return (
         <>
+           <Dashboard />
+        {/* 
             <Layout>
                 <Sider
                     className='sider'
@@ -119,6 +121,7 @@ function Login() {
                 footer={null}
             >
             </Modal>
+             */}
         </>
     )
 
