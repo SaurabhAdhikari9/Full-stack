@@ -63,7 +63,7 @@ class apiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.\
      *
      * @param  \App\Models\api  $api
      * @return \Illuminate\Http\Response

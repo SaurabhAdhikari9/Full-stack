@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\apiController;
+use App\Http\Controllers\ApiSchedule;
+use App\Http\Controllers\scheduleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // instead of these two lines
 // we can do
 Route::apiResource('/api', apiController::class);
+Route::apiResource('/schedules',scheduleController::class);
+
 // Route::resource  
