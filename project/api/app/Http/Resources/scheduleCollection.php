@@ -15,7 +15,7 @@ class scheduleCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'scheduleData' => $this->collection,
+            'data' => $this->collection,
         ];
     }
 }

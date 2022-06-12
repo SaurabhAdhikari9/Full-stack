@@ -49,7 +49,9 @@ export default function Dashboard(){
 ];
   return(
     <>  
-    <Table dataSource={users} columns={columns}/>
+    <Table dataSource={users} columns={columns}
+      
+    />
     </>
 
 
