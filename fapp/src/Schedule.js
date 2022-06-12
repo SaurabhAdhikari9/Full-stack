@@ -1,26 +1,28 @@
 import React, {useState, useEffect} from 'react'
-import {Table, Popconfirm, Button } from 'antd';
+import {Table, Popconfirm, Button, message } from 'antd';
 import 'antd/dist/antd.css';
 import HTTP from './http'
 function Schedule() {
 
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
-
     const retriveData = async () => {
       setLoading(true);
         const fetchData = await HTTP.get('/schedules/');
-        // const dataJson = await fetchData.json();
         setData(fetchData.data.data);
         setLoading(false);
-        // console.log(fetchData.data.data);  
     };
-    const handleDelete = (value) => {
-      const dataSource = [...data];
-      const filterData = dataSource.filter((item ) => item.id !== value.id);
-      const id = value.id;
-      setData(filterData);
-      console.log(id);
+
+  
+    const handleDelete = async (value) => {
+      const response = await HTTP.delete(`/schedules/${value.id}`);
+      if(response){
+        message.error("deleted!!!");
+      }
+      else{
+        message.error("failed!!");
+      }
+      retriveData();
     }
     const columns = [
         {
