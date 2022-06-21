@@ -57,6 +57,7 @@ function Update() {
   const updateDatabase = async () => {
     let url = "api/";
     let id = searchID;
+    
     const responser = await http.put(url.concat(id) , updateData);
     
 
@@ -69,7 +70,7 @@ function Update() {
     //     'Content':'application/json'
     //   },
     //   body:JSON.stringify(updateData)
-    // })
+    // })`
   }
   return (
     <div>

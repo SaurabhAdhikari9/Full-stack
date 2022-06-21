@@ -55,6 +55,7 @@ class scheduleController extends Controller
     public function update(Request $request, schedule $schedule)
     {
         //
+        // dd($request);
         $schedule ->update($request->only([
             'event_id','event_date','title','present','description'
         ])) ;
@@ -72,6 +73,8 @@ class scheduleController extends Controller
     {
         //
         $schedule->delete();
-        return response()->json(null,Response::HTTP_NO_CONTENT);
+        return response()->json(['status' => true]);
+        // return
+        // return response()->json(null,Response::HTTP_NO_CONTENT);
     }
 }
